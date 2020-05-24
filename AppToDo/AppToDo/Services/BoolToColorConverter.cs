@@ -11,9 +11,9 @@ namespace AppToDo.Services
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if ((bool) value){
-                return Color.ForestGreen;
+                return Color.FromHex("20A4B4");
             }
-            return Color.Default;
+            return Color.FromHex("#3988F1");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
