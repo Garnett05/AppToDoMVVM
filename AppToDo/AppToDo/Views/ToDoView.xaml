@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AppToDo.Views.ToDoView"
-             Title="{Binding PageTitle}">
+             Title="{Binding PageTitle}"
+             x:Name="ToDoViewPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Item" Order="Primary" Priority="0" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
@@ -13,7 +14,15 @@
         <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Complete" Command="{Binding Path=BindingContext.MarkAsCompletedCommand, 
+                                Source={x:Reference ToDoViewPage}}" CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" />
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

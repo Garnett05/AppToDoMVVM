@@ -22,6 +22,13 @@ namespace AppToDo.ViewModels
                 OnPropertyChanged("PageTitle");
             } }
         public ICommand AddItemCommand => new Command(() => AddNewCommand());
+        public ICommand MarkAsCompletedCommand => new Command<ToDoItem>(MarkAsCompleted);
+
+        private void MarkAsCompleted(ToDoItem obj)
+        {
+            obj.Completed = true;
+        }
+
         public ToDoViewModel()
         {
             Items = new ObservableCollection<ToDoItem>(ToDoItem.GetToDoItems());
