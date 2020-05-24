@@ -16,6 +16,7 @@ namespace AppToDo.ViewModels
         private ToDoItem _selectedItem;
         private string _completedHeader;
         private double _completedProgress;
+        public event EventHandler<double> UpdateProgressBar;
         public ObservableCollection<ToDoItem> Items { get; set; }
         public string PageTitle { get; set; }
         public ToDoItem SelectedItem
@@ -65,6 +66,7 @@ namespace AppToDo.ViewModels
         {
             CompletedHeader = $"Completed { Items.Count(x => x.Completed)}/{ Items.Count}";
             CompletedProgress = (double)Items.Count(x => x.Completed) / (double)Items.Count;
+            UpdateProgressBar?.Invoke(this, CompletedProgress);
         }
 
         private void AddNewCommand()

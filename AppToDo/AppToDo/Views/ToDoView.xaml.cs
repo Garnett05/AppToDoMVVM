@@ -16,7 +16,14 @@ namespace AppToDo.Views
         public ToDoView()
         {
             InitializeComponent();
-            BindingContext = new ToDoViewModel();
+            ToDoViewModel toDoVM = new ToDoViewModel();
+            BindingContext = toDoVM;
+            toDoVM.UpdateProgressBar += ToDoViewModel_UpdateProgressBar;
+        }
+
+        private void ToDoViewModel_UpdateProgressBar(object sender, double e)
+        {
+            progressBar.ProgressTo(e, 300, Easing.Linear);
         }
     }
 }
