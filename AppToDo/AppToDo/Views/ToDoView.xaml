@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:AppToDo.Services"
              mc:Ignorable="d"
              x:Class="AppToDo.Views.ToDoView"
              Title="{Binding PageTitle}"
@@ -10,6 +11,12 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Item" Order="Primary" Priority="0" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToColorConverter x:Key="BoolToColor" />
+            <local:BoolToTextDecorationConverter x:Key="BoolToTextDecoration" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" >
             <ListView.ItemTemplate>
@@ -20,7 +27,9 @@
                                 Source={x:Reference ToDoViewPage}}" CommandParameter="{Binding .}" />
                         </ViewCell.ContextActions>
                         <StackLayout>
-                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Name}" 
+                                   TextColor="{Binding Completed, Converter={StaticResource BoolToColor}}"
+                                   TextDecorations="{Binding Completed, Converter={StaticResource BoolToTextDecoration}}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

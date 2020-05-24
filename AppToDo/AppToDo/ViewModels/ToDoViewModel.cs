@@ -27,6 +27,8 @@ namespace AppToDo.ViewModels
         private void MarkAsCompleted(ToDoItem obj)
         {
             obj.Completed = true;
+            Items.Remove(obj);
+            Items.Add(obj);
         }
 
         public ToDoViewModel()
