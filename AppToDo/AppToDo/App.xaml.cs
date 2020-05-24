@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using AppToDo.Services;
 using AppToDo.Views;
 
 namespace AppToDo
@@ -12,9 +11,8 @@ namespace AppToDo
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+                        
+            MainPage = new NavigationPage (new Views.ToDoView());
         }
 
         protected override void OnStart()
