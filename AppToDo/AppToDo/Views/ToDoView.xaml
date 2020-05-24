@@ -6,6 +6,9 @@
              mc:Ignorable="d"
              x:Class="AppToDo.Views.ToDoView"
              Title="{Binding PageTitle}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Item" Order="Primary" Priority="0" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" >
             <ListView.ItemTemplate>

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using AppToDo.Models;
 using System.ComponentModel;
 using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace AppToDo.ViewModels
 {
@@ -20,9 +21,14 @@ namespace AppToDo.ViewModels
                 PageTitle = value?.Name;
                 OnPropertyChanged("PageTitle");
             } }
+        public ICommand AddItemCommand => new Command(() => AddNewCommand());
         public ToDoViewModel()
         {
             Items = new ObservableCollection<ToDoItem>(ToDoItem.GetToDoItems());
+        }
+        private void AddNewCommand()
+        {
+            Items.Add(new ToDoItem($"ToDo Item {Items.Count + 1}"));
         }
     }
 }
