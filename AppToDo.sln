@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppToDo.Android", "AppToDo\AppToDo.Android\AppToDo.Android.csproj", "{1A2A59B3-F4D7-491D-9925-AC1393462DB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppToDo", "AppToDo\AppToDo\AppToDo.csproj", "{E8E461F7-731E-4DAD-93B9-0323D80189BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppToDo", "AppToDo\AppToDo\AppToDo.csproj", "{E8E461F7-731E-4DAD-93B9-0323D80189BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Tests", "ToDo.Tests\ToDo.Tests.csproj", "{304E606C-FC93-429B-A868-3F499C50AE14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{E8E461F7-731E-4DAD-93B9-0323D80189BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8E461F7-731E-4DAD-93B9-0323D80189BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8E461F7-731E-4DAD-93B9-0323D80189BD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{304E606C-FC93-429B-A868-3F499C50AE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304E606C-FC93-429B-A868-3F499C50AE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304E606C-FC93-429B-A868-3F499C50AE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304E606C-FC93-429B-A868-3F499C50AE14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
