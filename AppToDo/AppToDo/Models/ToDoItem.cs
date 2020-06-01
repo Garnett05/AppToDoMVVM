@@ -14,14 +14,7 @@ namespace AppToDo.Models
         }
         public static IEnumerable<ToDoItem> GetToDoItems()
         {
-            return new List<ToDoItem>
-            {
-                new ToDoItem("Go to work"),
-                new ToDoItem("Have a dev meeting"),
-                new ToDoItem("Lunch time"),
-                new ToDoItem("Go to gym"),
-                new ToDoItem("Family time")
-            };
+            return new List<ToDoItem>();
         }
     }
 }

@@ -8,11 +8,14 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using System.Windows.Input;
 using System.Linq;
+using AppToDo.Services;
+using System.Threading.Tasks;
 
 namespace AppToDo.ViewModels
 {
     public class ToDoViewModel : BindableObject
     {
+        private IDialogMessage _dialogMessage;
         private ToDoItem _selectedItem;
         private string _completedHeader;
         private double _completedProgress;
@@ -29,7 +32,7 @@ namespace AppToDo.ViewModels
                 OnPropertyChanged("PageTitle");
             }
         }
-        public ICommand AddItemCommand => new Command(() => AddNewCommand());
+        public ICommand AddItemCommand => new Command(async() => { await ShowPrompt(); });
         public ICommand MarkAsCompletedCommand => new Command<ToDoItem>(MarkAsCompleted);
         public string CompletedHeader
         {
@@ -49,8 +52,9 @@ namespace AppToDo.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ToDoViewModel()
+        public ToDoViewModel(IDialogMessage dialogMessage)
         {
+            _dialogMessage = dialogMessage;
             Items = new ObservableCollection<ToDoItem>(ToDoItem.GetToDoItems());
             CalculateCompletedHeader();
         }
@@ -69,10 +73,18 @@ namespace AppToDo.ViewModels
             UpdateProgressBar?.Invoke(this, CompletedProgress);
         }
 
-        private void AddNewCommand()
+        private void AddNewCommand(string s)
         {
-            Items.Add(new ToDoItem($"ToDo Item {Items.Count + 1}"));
+            Items.Add(new ToDoItem(s));
             CalculateCompletedHeader();
+        }
+        private async Task ShowPrompt()
+        {
+            string answer = await _dialogMessage.DisplayPrompt("New Item", "Type the new item:");
+            if(answer.Length > 0)
+            {
+                AddNewCommand(answer);
+            }            
         }
     }
 }

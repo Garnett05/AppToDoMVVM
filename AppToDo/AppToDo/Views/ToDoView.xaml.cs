@@ -13,12 +13,12 @@ namespace AppToDo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ToDoView : ContentPage
     {
-        public ToDoView()
+        public ToDoView(ToDoViewModel viewModel)
         {
             InitializeComponent();
-            ToDoViewModel toDoVM = new ToDoViewModel();
-            BindingContext = toDoVM;
-            toDoVM.UpdateProgressBar += ToDoViewModel_UpdateProgressBar;
+            //ToDoViewModel toDoVM = new ToDoViewModel();
+            BindingContext = viewModel;
+            viewModel.UpdateProgressBar += ToDoViewModel_UpdateProgressBar;
         }
 
         private void ToDoViewModel_UpdateProgressBar(object sender, double e)
